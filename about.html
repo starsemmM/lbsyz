@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于我们 - 灵宝市第一初级中学</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif; background: #f5f6fa; color: #333; line-height: 1.7; font-size: 14px; font-weight: normal; }
+a { color: #333; text-decoration: none; }
+img { display: block; max-width: 100%; }
+h1,h2,h3,h4,h5,h6 { font-weight: normal; }
+
+.top-bar { background: #2c4a7a; color: #fff; padding: 8px 40px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
+.top-bar a { color: #ccc; margin-left: 18px; }
+.header { background: #fff; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.school-name h1 { font-size: 26px; color: #2c4a7a; letter-spacing: 2px; }
+.school-name p { font-size: 12px; color: #888; margin-top: 2px; }
+.nav-bar { background: #fff; border-bottom: 1px solid #ddd; padding: 0 40px; position: sticky; top: 0; z-index: 100; }
+.nav-bar ul { display: flex; list-style: none; }
+.nav-bar li a { display: block; padding: 14px 22px; font-size: 15px; color: #444; border-bottom: 3px solid transparent; transition: all .2s; }
+.nav-bar li a:hover { color: #2c4a7a; border-bottom-color: #aaa; }
+.nav-bar li a.active { color: #2c4a7a; border-bottom-color: #aaa; }
+
+/* 关于我们 */
+.about-container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+.about-container h2.page-title { font-size: 22px; color: #2c4a7a; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #ddd; }
+
+.about-section { background: #fff; border-radius: 8px; padding: 24px 28px; margin-bottom: 20px; border: 1px solid #e0e0e0; }
+.about-section h3 { font-size: 17px; color: #2c4a7a; margin-bottom: 12px; padding-left: 12px; border-left: 3px solid #aaa; }
+.about-section p { font-size: 14px; color: #555; margin-bottom: 10px; text-indent: 2em; }
+.about-section p:last-child { margin-bottom: 0; }
+
+/* 数据统计 */
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
+.stat-item { text-align: center; padding: 16px 10px; background: #f8f9fc; border-radius: 6px; border: 1px solid #e8e8e8; }
+.stat-num { font-size: 28px; color: #2c4a7a; }
+.stat-label { font-size: 13px; color: #888; margin-top: 4px; }
+
+/* 校园图片 */
+.campus-img { width: 100%; height: 240px; border-radius: 6px; overflow: hidden; margin-top: 14px; border: 1px solid #e0e0e0; }
+.campus-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.footer { background: #2c4a7a; color: #ccc; text-align: center; padding: 20px; font-size: 13px; margin-top: 40px; line-height: 2; }
+.fade-in { animation: fadeIn .6s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+    <span>欢迎访问灵宝市第一初级中学官方网站</span>
+    <div><a href="#">教师入口</a><a href="#">学生入口</a><a href="#">家长入口</a></div>
+</div>
+
+<div class="header">
+    <div class="school-name">
+        <h1>灵宝市第一初级中学</h1>
+        <p>Lingbao No.1 Junior High School · 建校于1996年</p>
+    </div>
+    
+</div>
+
+<nav class="nav-bar">
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="news.html">近期大事</a></li>
+        <li><a href="leaders.html">领导班子</a></li>
+        <li><a href="teachers.html">名师风貌</a></li>
+        <li><a href="students.html">优秀学生</a></li>
+        <li><a href="about.html" class="active">关于我们</a></li>
+    </ul>
+</nav>
+
+<div class="about-container fade-in">
+    <h2 class="page-title">关于我们</h2>
+
+    <div class="about-section">
+        <h3>学校简介</h3>
+        <p>灵宝市第一初级中学创办于1996年，是河南省首批示范性初中、河南省文明校园。学校坐落于灵宝市城关镇，占地面积120余亩，建筑面积5.6万平方米，环境优美，设施一流。</p>
+        <p>学校秉承"高质量、有特色、现代化、创一流"的办学宗旨，坚持"以人为本求实效，厚德博学创一流"的管理理念，弘扬"特别能吃苦、特别能奉献、特别能拼搏、特别能创新"的四特精神，形成了浓厚的教研氛围与优良学风。</p>
+        <div class="campus-img">
+            <img src="images/school_campus.png" alt="校园全景">
+        </div>
+    </div>
+
+    <div class="about-section">
+        <h3>办学数据</h3>
+        <p>经过近70年的办学历程，学校已成为豫西地区初中教育的标杆。现有教学班30个，在校学生1500余人，教职工120余人，其中高级教师20人，一级教师45人，本科及以上学历教师占比超过95%。</p>
+        <div class="stats-row">
+            <div class="stat-item"><div class="stat-num">1996</div><div class="stat-label">建校年份</div></div>
+            <div class="stat-item"><div class="stat-num">42</div><div class="stat-label">教学班级</div></div>
+            <div class="stat-item"><div class="stat-num">2400+</div><div class="stat-label">在校学生</div></div>
+            <div class="stat-item"><div class="stat-num">82.3%</div><div class="stat-label">中考优秀率</div></div>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <h3>办学特色</h3>
+        <p><strong>学科竞赛：</strong>学校构建数学、英语、道法、化学等多个名师工作室，常态化开展同课异构、抽人赛课与个人微课题，现有省市立项课题10个、在研待结项14个，教研成果突出。</p>
+        <p><strong>素质教育：</strong>开设科技节、艺术节、体育节、读书节四大校园节日，拥有蓓蕾舞蹈团、声乐队、馨苑文学社、美术班、男女子篮球队、田径队等30余个学生社团，为学生全面发展提供广阔平台。</p>
+        <p><strong>家校共育：</strong>依托家校共育机制，定期开展家长学校、校园开放日与课后服务社团活动，构建学校、家庭、社会协同育人格局。</p>
+    </div>
+
+    <div class="about-section">
+        <h3>校训与愿景</h3>
+        <p><strong>校训：</strong>厚德博学、求实创新</p>
+        <p><strong>办学目标：</strong>建设豫西一流、全省知名的现代化初中</p>
+        <p><strong>育人目标：</strong>培养德智体美劳全面发展的社会主义建设者和接班人</p>
+        <div class="campus-img">
+            <img src="images/school_gate.png" alt="校门" style="
+                width: 100%;
+                height: 100%; 
+                display: block; 
+                border-radius: 10px;
+                ">
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>© 2025-2026 灵宝市第一初级中学 版权所有</p>
+    <p>此网页为一中学子自发独立创作，如有侵权联系必删</p>
+</footer>
+
+</body>
+</html>

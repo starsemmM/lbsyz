@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>近期大事 - 灵宝市第一初级中学</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif; background: #f5f6fa; color: #333; line-height: 1.7; font-size: 14px; font-weight: normal; }
+a { color: #333;}
+img { display: block; max-width: 100%; }
+h1,h2,h3,h4,h5,h6 { font-weight: normal; }
+
+.top-bar { background: #2c4a7a; color: #fff; padding: 8px 40px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
+.top-bar a { color: #ccc; margin-left: 18px; }
+.header { background: #fff; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.school-name h1 { font-size: 26px; color: #2c4a7a; letter-spacing: 2px; }
+.school-name p { font-size: 12px; color: #888; margin-top: 2px; }
+.nav-bar { background: #fff; border-bottom: 1px solid #ddd; padding: 0 40px; position: sticky; top: 0; z-index: 100; }
+.nav-bar ul { display: flex; list-style: none; }
+.nav-bar li a { display: block; padding: 14px 22px; font-size: 15px; color: #444; border-bottom: 3px solid transparent; transition: all .2s; }
+.nav-bar li a:hover { color: #2c4a7a; border-bottom-color: #aaa; }
+.nav-bar li a.active { color: #2c4a7a; border-bottom-color: #aaa; }
+
+/* 时间线 */
+.timeline { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+.timeline h2.page-title { font-size: 22px; color: #2c4a7a; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid #ddd; }
+.timeline-item { display: flex; margin-bottom: 24px; background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e0e0e0; transition: box-shadow .2s; }
+.timeline-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,.06); }
+.timeline-date { min-width: 100px; background: #f0f2f8; padding: 20px 14px; text-align: center; border-right: 1px solid #e0e0e0; }
+.timeline-date .year { font-size: 13px; color: #888; }
+.timeline-date .day { font-size: 20px; color: #555; margin-top: 4px; }
+.timeline-content { padding: 18px 22px; flex: 1; }
+.timeline-content h3 { font-size: 16px; color: #333; margin-bottom: 6px; }
+.timeline-content p { font-size: 13px; color: #666; }
+.timeline-content .tag { display: inline-block; font-size: 12px; color: #777; background: #f0f0f0; padding: 2px 8px; border-radius: 3px; margin-top: 8px; }
+
+.footer { background: #2c4a7a; color: #ccc; text-align: center; padding: 20px; font-size: 13px; margin-top: 40px; line-height: 2; }
+.fade-in { animation: fadeIn .6s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ================= 移动端适配 ================= */
+/* 响应式基础（图片自适应已在全局 img{max-width:100%}） */
+html { -webkit-text-size-adjust: 100%; }
+body { min-width: 0; }
+* { -webkit-tap-highlight-color: transparent; }
+
+/* 容器统一在移动端留边距 */
+.top-bar, .header, .nav-bar { padding-left: 20px; padding-right: 20px; }
+
+/* ===== 导航栏：汉堡菜单 ===== */
+/* 移动端默认隐藏复选框与 label，桌面端用 CSS 维持原样 */
+.nav-bar .menu-toggle { display: none; }
+.nav-bar .menu-icon {
+    display: none;
+    cursor: pointer;
+    padding: 10px 0;
+    user-select: none;
+}
+.nav-bar .menu-icon span {
+    display: block;
+    width: 24px; height: 2px;
+    background: #444;
+    margin: 5px 0;
+    transition: all .25s;
+}
+.nav-bar ul {
+    flex-wrap: wrap;
+}
+.nav-bar li { flex: 0 0 auto; }
+
+/* ===== 首页三栏 ===== */
+.main-content { grid-template-columns: 1fr 2fr 1fr; }
+
+/* ===== 卡片自适应字号 ===== */
+.person-card .img-wrapper { width: 90px; height: 90px; }
+
+/* ===== 时间线（news）日期列 ===== */
+.timeline-date { min-width: 84px; padding: 16px 10px; }
+.timeline-date .day { font-size: 18px; }
+
+/* ===== 平板：<=992px ===== */
+@media (max-width: 992px) {
+    .school-name h1 { font-size: 22px; }
+    .header { padding: 14px 20px; }
+
+    /* 首页三栏 -> 左中两栏堆叠，右侧喜报下移 */
+    .main-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    .main-content .sidebar-right {
+        grid-column: 1 / -1;
+    }
+    /* 中间新闻卡：图缩窄 */
+    .news-card .news-img { width: 160px; min-width: 160px; height: 120px; }
+
+    /* 3列网格 -> 2列 */
+    .teachers-grid, .students-grid, .leaders-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* about 统计 4 -> 2 */
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== 手机：<=768px ===== */
+@media (max-width: 768px) {
+    body { font-size: 13px; }
+
+    /* 顶部条：堆叠 */
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    .top-bar a { margin-left: 0; margin-right: 14px; }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 16px;
+        gap: 4px;
+    }
+    .school-name h1 { font-size: 20px; letter-spacing: 1px; }
+    .school-name p { font-size: 11px; }
+
+    /* 汉堡菜单 */
+    .nav-bar { padding: 0 16px; }
+    .nav-bar .menu-icon { display: block; }
+    .nav-bar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 4px 0 10px;
+    }
+    .nav-bar li { width: 100%; }
+    .nav-bar li a {
+        padding: 12px 4px;
+        border-bottom: 1px solid #eee;
+        font-size: 15px;
+    }
+    .nav-bar li a.active { border-bottom-color: #2c4a7a; }
+    /* checkbox 控制展开 */
+    .nav-bar .menu-toggle:checked ~ ul { display: flex; }
+    /* 汉堡变 X */
+    .nav-bar .menu-toggle:checked ~ .menu-icon span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-bar .menu-toggle:checked ~ .menu-icon span:nth-child(2) { opacity: 0; }
+    .nav-bar .menu-toggle:checked ~ .menu-icon span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* 首页单栏 */
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin: 16px auto;
+    }
+    .news-card { flex-direction: column; }
+    .news-card .news-img { width: 100%; min-width: 0; height: 160px; }
+    .news-body { padding: 14px 16px; }
+    .news-body h3 { font-size: 15px; }
+    .news-meta { flex-wrap: wrap; gap: 6px; }
+
+    /* 网格 1 列 */
+    .teachers-grid, .students-grid, .leaders-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin: 20px auto;
+    }
+    .student-card .avatar,
+    .teacher-card .avatar,
+    .leader-card .avatar { width: 76px; height: 76px; }
+
+    /* about */
+    .about-container { padding: 0 14px; }
+    .about-section { padding: 18px 16px; }
+    .about-section p { font-size: 13px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat-num { font-size: 22px; }
+    .campus-img { height: 160px; }
+
+    /* 时间线：日期纵向 */
+    .timeline { padding: 0 14px; }
+    .timeline-item { flex-direction: column; }
+    .timeline-date {
+        min-width: 0;
+        width: 100%;
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        padding: 10px 16px;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .timeline-date .day { margin-top: 0; font-size: 16px; }
+    .timeline-content { padding: 14px 16px; }
+
+    .footer { padding: 16px 14px; font-size: 12px; line-height: 1.8; }
+}
+
+/* ===== 小屏：<=480px ===== */
+@media (max-width: 480px) {
+    .school-name h1 { font-size: 18px; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .leader-card, .teacher-card, .student-card { padding: 16px 12px; }
+}
+/* ================= /移动端适配 ================= */
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+    <span>欢迎访问灵宝市第一初级中学官方网站</span>
+    <div><a href="#">教师入口</a><a href="#">学生入口</a><a href="#">家长入口</a></div>
+</div>
+
+<div class="header">
+    <div class="school-name">
+        <h1>灵宝市第一初级中学</h1>
+        <p>Lingbao No.1 Junior High School · 建校于1996年</p>
+    </div>
+    
+</div>
+
+<nav class="nav-bar">
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="菜单开关">
+        <label for="menu-toggle" class="menu-icon" aria-label="导航菜单">
+            <span></span><span></span><span></span>
+        </label>
+<ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="news.html" class="active">近期大事</a></li>
+        <li><a href="leaders.html">领导班子</a></li>
+        <li><a href="teachers.html">名师风貌</a></li>
+        <li><a href="students.html">优秀学生</a></li>
+        <li><a href="about.html">关于我们</a></li>
+    </ul>
+    </nav>
+
+<div class="timeline fade-in">
+    <h2 class="page-title">近期大事</h2>
+
+    <div class="timeline-item">
+        <div class="timeline-date"><div class="year">2026年</div><div class="day">09-01</div></div>
+        <div class="timeline-content">
+            <h3><a href="https://mp.weixin.qq.com/s?__biz=MzIyMDQxNjgzNQ==&mid=2247533882&idx=1&sn=5849cd2489b5a437fbe054fc2f286a74&chksm=9653066252d619a1afbc76d3aa4c4ed88314f97321f28aa1b4911ddc21a6ba2ecaf8159db607#rd">2026年秋季学期开学典礼隆重举行</a></h3>
+            <p>校长以"新学期、新目标、新作为"为主题讲授思政第一课，勉励全体同学志存高远、脚踏实地，七年级新生以崭新面貌开启初中生活。</p>
+            <span class="tag">校园活动</span>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date"><div class="year">2026年</div><div class="day">06-25</div></div>
+        <div class="timeline-content">
+            <h3>2026届中考成绩揭晓，中考优秀率82.3%创历史新高</h3>
+            <p>我校2026届中考再创佳绩，中考优秀率稳步提升，多名学生升入省市级示范性中学，整体成绩位居全市前列。</p>
+            <span class="tag">中考喜报</span>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date"><div class="year">2026年</div><div class="day">05-20</div></div>
+        <div class="timeline-content">
+            <h3><a href="https://mp.weixin.qq.com/s?__biz=MzIyMDQxNjgzNQ==&mid=2247516146&idx=1&sn=dca2a6f4b231a7a767bb8f4cdae77a25&chksm=963726f12787ce885702e4e25131343d47911226497d2bec9933015cdc29e4048504907806cb#rd">红歌嘹亮颂祖国，青春飞扬展风采——市一中开展“青春放歌，逐梦前行”迎国庆合唱大赛</a></h3>
+            <p>辉煌璀璨七十五，盛世华章耀神州；砥砺奋进新时代，同心共筑中国梦。为庆祝祖国七十五华诞，全面落实立德树人根本任...</p>
+            <span class="tag">文艺活动</span>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date"><div class="year">2026年</div><div class="day">05-10</div></div>
+        <div class="timeline-content">
+            <h3>我校学子获全国初中数学联赛一等奖，升入省市级示范性中学</h3>
+            <p>在2026年全国初中数学联赛中，我校多名学生荣获省级奖项，数学名师工作室的竞赛辅导成效显著。</p>
+            <span class="tag">竞赛捷报</span>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date"><div class="year">2026年</div><div class="day">03-28</div></div>
+        <div class="timeline-content">
+            <h3>学科拓展成绩斐然，国家级奖项创历史</h3>
+            <p>我校在数学、物理、化学联赛中获市级一等奖6项、二等奖多项，获奖人数再创新高。</p>
+            <span class="tag">竞赛捷报</span>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date"><div class="year">2026年</div><div class="day">02-28</div></div>
+        <div class="timeline-content">
+            <h3>我校获评"河南省文明校园"称号</h3>
+            <p>经过省文明办严格评审，我校凭借优美的校园环境、优良的校风学风和突出的育人成果，成功获评河南省文明校园。</p>
+            <span class="tag">学校荣誉</span>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date"><div class="year">2025年</div><div class="day">11-10</div></div>
+        <div class="timeline-content">
+            <h3><a href="https://mp.weixin.qq.com/s?__biz=MzI4ODQwMzkwMw==&mid=2247519050&idx=1&sn=77e07637aad162e18a002b1d2fa58fff&chksm=edd4d79b1fcc7830c38f295478f9a2b7ffbc2d04289d5f77a8018a16cc5fc1209544713c92f8#rd">信奥战绩再攀高峰！世纪海航携手优乐教育，助力灵宝一中铸就科创教育标杆</a></h3>
+            <p>近日，2025年河南省青少年信息学奥林匹克竞赛（CSP-J）传来捷报：灵宝市第一初级中学科技创新班学子凭借过硬实力脱颖而出，斩获省级一等奖1项、二等奖3项，不仅获奖人数与质量双双创下该校历史新高，更重要的是，9人参加竞赛集训全部进入复赛，成为三门峡市唯...</p>
+            <span class="tag">科技活动</span>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>© 2025-2026 灵宝市第一初级中学 版权所有</p>
+    <p>此网页为一中学子自发独立创作，如有侵权联系必删</p>
+</footer>
+
+
+<script>
+// 移动端：点击导航链接后自动收起菜单
+document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('menu-toggle');
+    if (!toggle) return;
+    var links = document.querySelectorAll('.nav-bar ul a');
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function () {
+            if (window.innerWidth <= 768) toggle.checked = false;
+        });
+    }
+});
+</script>
+
+</body>
+</html>
